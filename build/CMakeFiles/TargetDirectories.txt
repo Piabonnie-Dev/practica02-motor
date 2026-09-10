@@ -1,0 +1,3 @@
+C:/semana02/semana02/plantilla/build/CMakeFiles/practica02_motor.dir
+C:/semana02/semana02/plantilla/build/CMakeFiles/edit_cache.dir
+C:/semana02/semana02/plantilla/build/CMakeFiles/rebuild_cache.dir

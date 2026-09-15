@@ -1,8 +1,8 @@
 [
 {
-  "directory": "C:/semana02/semana02/plantilla/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/semana02/semana02/plantilla/src -g -std=gnu++20 -o CMakeFiles\\practica02_motor.dir\\src\\main.cpp.obj -c C:\\semana02\\semana02\\plantilla\\src\\main.cpp",
-  "file": "C:/semana02/semana02/plantilla/src/main.cpp",
-  "output": "C:/semana02/semana02/plantilla/build/CMakeFiles/practica02_motor.dir/src/main.cpp.obj"
+  "directory": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\c++.exe -I\"C:/motor de videojuegos C++/semana02/semana02/plantilla/src\" -std=gnu++20 -o CMakeFiles\\practica03_motor.dir\\src\\main.cpp.obj -c \"C:\\motor de videojuegos C++\\semana02\\semana02\\plantilla\\src\\main.cpp\"",
+  "file": "C:/motor de videojuegos C++/semana02/semana02/plantilla/src/main.cpp",
+  "output": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build/CMakeFiles/practica03_motor.dir/src/main.cpp.obj"
 }
 ]

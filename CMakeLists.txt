@@ -34,7 +34,7 @@ endif()
 # Archivos del proyecto
 add_executable(${PROJECT_NAME}
 
-    src/main.cpp
+    src/main.cpp 
     src/Vector2.hpp
     src/Component.hpp
     src/GameObject.hpp

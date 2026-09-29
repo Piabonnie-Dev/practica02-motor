@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: practica03_motor
+# Project: practica04_motor
 # Configurations: Debug
 # =============================================================================
 
@@ -41,42 +41,42 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/motor$ de$ videojuegos$ C++/semana02/semana02/plantilla/build/
 # =============================================================================
-# Object build statements for EXECUTABLE target practica03_motor
+# Object build statements for EXECUTABLE target practica04_motor
 
 
 #############################################
-# Order-only phony target for practica03_motor
+# Order-only phony target for practica04_motor
 
-build cmake_object_order_depends_target_practica03_motor: phony || .
+build cmake_object_order_depends_target_practica04_motor: phony || .
 
-build CMakeFiles/practica03_motor.dir/src/main.cpp.obj: CXX_COMPILER__practica03_motor_unscanned_Debug C$:/motor$ de$ videojuegos$ C++/semana02/semana02/plantilla/src/main.cpp || cmake_object_order_depends_target_practica03_motor
+build CMakeFiles/practica04_motor.dir/src/main.cpp.obj: CXX_COMPILER__practica04_motor_unscanned_Debug C$:/motor$ de$ videojuegos$ C++/semana02/semana02/plantilla/src/main.cpp || cmake_object_order_depends_target_practica04_motor
   CONFIG = Debug
-  DEP_FILE = CMakeFiles\practica03_motor.dir\src\main.cpp.obj.d
+  DEP_FILE = CMakeFiles\practica04_motor.dir\src\main.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -I"C:/motor de videojuegos C++/semana02/semana02/plantilla/src"
-  OBJECT_DIR = CMakeFiles\practica03_motor.dir
-  OBJECT_FILE_DIR = CMakeFiles\practica03_motor.dir\src
-  TARGET_SUPPORT_DIR = CMakeFiles\practica03_motor.dir
+  OBJECT_DIR = CMakeFiles\practica04_motor.dir
+  OBJECT_FILE_DIR = CMakeFiles\practica04_motor.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\practica04_motor.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target practica03_motor
+# Link build statements for EXECUTABLE target practica04_motor
 
 
 #############################################
-# Link the executable practica03_motor.exe
+# Link the executable practica04_motor.exe
 
-build practica03_motor.exe: CXX_EXECUTABLE_LINKER__practica03_motor_Debug CMakeFiles/practica03_motor.dir/src/main.cpp.obj | C$:/msys64/ucrt64/lib/libSDL3.dll.a
+build practica04_motor.exe: CXX_EXECUTABLE_LINKER__practica04_motor_Debug CMakeFiles/practica04_motor.dir/src/main.cpp.obj | C$:/msys64/ucrt64/lib/libSDL3.dll.a
   CONFIG = Debug
   FLAGS = -g
   LINK_LIBRARIES = C:/msys64/ucrt64/lib/libSDL3.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\practica03_motor.dir
+  OBJECT_DIR = CMakeFiles\practica04_motor.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = practica03_motor.exe
-  TARGET_IMPLIB = libpractica03_motor.dll.a
-  TARGET_PDB = practica03_motor.exe.dbg
-  TARGET_SUPPORT_DIR = CMakeFiles\practica03_motor.dir
+  TARGET_FILE = practica04_motor.exe
+  TARGET_IMPLIB = libpractica04_motor.dll.a
+  TARGET_PDB = practica04_motor.exe.dbg
+  TARGET_SUPPORT_DIR = CMakeFiles\practica04_motor.dir
 
 
 #############################################
@@ -104,7 +104,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build practica03_motor: phony practica03_motor.exe
+build practica04_motor: phony practica04_motor.exe
 
 # =============================================================================
 # Folder targets.
@@ -114,7 +114,7 @@ build practica03_motor: phony practica03_motor.exe
 #############################################
 # Folder: C:/motor de videojuegos C++/semana02/semana02/plantilla/build
 
-build all: phony practica03_motor.exe
+build all: phony practica04_motor.exe
 
 # =============================================================================
 # Built-in targets

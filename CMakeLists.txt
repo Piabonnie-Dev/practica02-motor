@@ -1,12 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(practica03_motor LANGUAGES CXX)
+project(practica04_motor LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
 
 # Detección de SDL3
 find_package(SDL3 QUIET)
@@ -30,11 +29,9 @@ else()
 
 endif()
 
-
-# Archivos del proyecto
 add_executable(${PROJECT_NAME}
 
-    src/main.cpp 
+    src/main.cpp
     src/Vector2.hpp
     src/Component.hpp
     src/GameObject.hpp
@@ -42,15 +39,17 @@ add_executable(${PROJECT_NAME}
     src/RectRenderComponent.hpp
     src/PlayerControllerComponent.hpp
 
+    # Practica 04
+    src/ColliderComponent.hpp
+    src/CollisionManager.hpp
+    src/BallComponent.hpp
 )
-
 
 target_include_directories(
     ${PROJECT_NAME}
     PRIVATE
     src
 )
-
 
 target_link_libraries(
     ${PROJECT_NAME}

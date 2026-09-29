@@ -23,6 +23,7 @@ class Component
     virtual void Update(float dt){} //Maneja la logica del juego basada en el tiempo. El parametro dt (delta time)
     virtual void Render(SDL_Renderer *renderer){} // Se encarga de la representacion grafica. Recibe el puntero renderer al renderer de SDL, para dibujar el objeto en la pantalla. Se llama cada frame para renderizar el objeto en la pantalla.
 
-    
+    //Implementacion Practica04: 
+    virtual void OnCollision(GameObject *other){}
 
 };

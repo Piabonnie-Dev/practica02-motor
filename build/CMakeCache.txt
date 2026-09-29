@@ -94,7 +94,7 @@ CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=C:/motor de videojuegos C++/semana02/sem
 CMAKE_GNUtoMS:BOOL=OFF
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/practica03_motor
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/practica04_motor
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=C:/msys64/ucrt64/bin/ld.exe
@@ -141,7 +141,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=practica03_motor
+CMAKE_PROJECT_NAME:STATIC=practica04_motor
 
 //Value Computed by CMake
 CMAKE_PROJECT_SPDX_LICENSE:STATIC=
@@ -233,13 +233,13 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 SDL3_DIR:PATH=C:/msys64/ucrt64/lib/cmake/SDL3
 
 //Value Computed by CMake
-practica03_motor_BINARY_DIR:STATIC=C:/motor de videojuegos C++/semana02/semana02/plantilla/build
+practica04_motor_BINARY_DIR:STATIC=C:/motor de videojuegos C++/semana02/semana02/plantilla/build
 
 //Value Computed by CMake
-practica03_motor_IS_TOP_LEVEL:STATIC=ON
+practica04_motor_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-practica03_motor_SOURCE_DIR:STATIC=C:/motor de videojuegos C++/semana02/semana02/plantilla
+practica04_motor_SOURCE_DIR:STATIC=C:/motor de videojuegos C++/semana02/semana02/plantilla
 
 
 ########################

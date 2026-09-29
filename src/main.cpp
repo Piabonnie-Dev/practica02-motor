@@ -11,6 +11,12 @@
 #include "RectRenderComponent.hpp"
 #include "PlayerControllerComponent.hpp"
 
+//Practica 04
+
+#include "ColliderComponent.hpp"
+#include "CollisionManager.hpp"
+#include "BallComponent.hpp"
+
 void SDL_LogPlatformInfo();
 
 
@@ -33,7 +39,11 @@ struct AppState
     //Coleccion de todas las entidades activas en el mundo
     std::vector<std::unique_ptr<GameObject>> entities;
 
-    
+// Mostrar u ocultar las cajas de colision
+bool debug_draw {true};
+
+    //Gestor de colisiones
+    CollisionManager collisionManager{&entities};
 } appstate;
 
 
@@ -82,9 +92,16 @@ player->AddComponent<RectRenderComponent>(
     SDL_Color{60, 180, 100, 255}
 );
 
+//Caja de colision del jugador
+player->AddComponent<ColliderComponent>(
+    Vector2{60.0f, 60.0f}
+);
+
+
 //Le damos controles
 player->AddComponent<PlayerControllerComponent>(
-    300.0f, true
+    300.0f, false  //Le cambiamos a false para que se desactive el seguimiento del mouse
+    //y se pruebe unicamente con los controles WASD/flechas
 );
 
 //Metemos al jugador en la lista de entidades
@@ -93,12 +110,47 @@ player->AddComponent<PlayerControllerComponent>(
 //ENTIDAD OBSTACULO
 
 auto obstacle = std::make_unique<GameObject>("Obstacle");
-obstacle ->AddComponent<TransformComponent>(Vector2{150.0f, 120.0f}, Vector2{1.5f, 1.5f});
-obstacle->AddComponent<RectRenderComponent>(Vector2{40.0f, 40.0f},
-SDL_Color{220, 70, 70, 255});
+// se cambia la posicion y tamanio para la practica 04
+obstacle ->AddComponent<TransformComponent>(
+    Vector2{180.0f, 140.0f},
+     Vector2{1.0f, 1.0f}
+    );
+
+obstacle->AddComponent<RectRenderComponent>(
+    Vector2{80.0f, 80.0f},
+SDL_Color{220, 70, 70, 255}
+);
+//Caja de colision
+obstacle->AddComponent<ColliderComponent>(
+    Vector2{80.0f, 80.0f}
+);
+
 
 ::appstate.entities.push_back(std::move(obstacle));
 
+// ENTIDAD PELOTA
+
+auto ball = std::make_unique<GameObject>("Ball");
+
+ball->AddComponent<TransformComponent>(
+    Vector2{468.0f, 80.0f},
+    Vector2{1.0f, 1.0f}
+);
+ball->AddComponent<RectRenderComponent>(
+    Vector2{24.0f, 24.0f},
+    SDL_Color{240, 210, 60, 255}
+);
+
+// Caja de colision
+ball->AddComponent<ColliderComponent>(
+    Vector2{24.0f, 24.0f}
+);
+
+ball->AddComponent<BallComponent>(
+    Vector2{220.0f, 180.0f}
+);
+
+::appstate.entities.push_back(std::move(ball));
 
 
 
@@ -135,6 +187,10 @@ while (app->physics_accumulator >= FIXED_TIMESTEP){
 for(auto &entity : app->entities){
     entity->Update(FIXED_TIMESTEP);
 }
+// Revisamos colisiones despues del movimiento
+app->collisionManager.CheckCollisions();
+
+
 app->physics_accumulator -= FIXED_TIMESTEP;
     
 }
@@ -150,19 +206,50 @@ app->physics_accumulator -= FIXED_TIMESTEP;
     for(auto &entity : app->entities){
         entity->Render(app->renderer);
     }
+//Debug Draw de colisiones
+if(app->debug_draw){
+for(auto &entity : app->entities)
+{
+    if(auto *collider = entity->GetComponent<ColliderComponent>())
+    {
+        collider->RenderDebug(app->renderer);
+    }
+}
+
+}
 
 
     SDL_RenderPresent(app->renderer);
 
     return SDL_APP_CONTINUE;
 }
-
+//Sustituimos gran parte de SDL_AppEvent para cumplir el interruptor de depuracion con F1
 SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
 {
+   
+   AppState *app = static_cast<AppState *>(appstate);
+
     if (event->type == SDL_EVENT_QUIT)
     {
         return SDL_APP_SUCCESS;
     }
+
+    //F1 activa / desactiva Debug Draw
+    if(event->type == SDL_EVENT_KEY_DOWN &&
+    event->key.scancode == SDL_SCANCODE_F1)
+    {
+        if(app){
+
+            app->debug_draw = !app->debug_draw;
+
+            SDL_Log(
+                "Debug Draw: %s",
+                app->debug_draw ? "ACTIVADO" : "DESACTIVADO"
+            );
+        }
+    }
+
+
     return SDL_APP_CONTINUE;
 }
 

@@ -91,4 +91,19 @@ void Render(SDL_Renderer * renderer){
     }
 }
 
+//Practica04:
+//Flujo: CollisionManager --> GameObject::OnCollision()-->component->OnCollision()
+void OnCollision(GameObject *other){
+if(!m_active)
+return;
+
+for(auto &component : m_components){
+component->OnCollision(other);
+
+}
+
+}
+
+
+
 };

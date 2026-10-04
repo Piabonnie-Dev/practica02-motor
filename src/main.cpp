@@ -1,23 +1,14 @@
 #define SDL_MAIN_USE_CALLBACKS 1
 
-#include <vector>
 #include <memory>
+
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
-#include "Vector2.hpp"
-#include "GameObject.hpp"
-#include "TransformComponent.hpp"
-#include "RectRenderComponent.hpp"
-#include "PlayerControllerComponent.hpp"
+#include "SceneManager.hpp"
+#include "TitleScene.hpp"
 
-//Practica 04
 
-#include "ColliderComponent.hpp"
-#include "CollisionManager.hpp"
-#include "BallComponent.hpp"
-
-void SDL_LogPlatformInfo();
 
 
 
@@ -33,17 +24,7 @@ struct AppState
 
     
 
-    // Acumulador de tiempo para fisicas
-    float physics_accumulator{0.0f};
-
-    //Coleccion de todas las entidades activas en el mundo
-    std::vector<std::unique_ptr<GameObject>> entities;
-
-// Mostrar u ocultar las cajas de colision
-bool debug_draw {true};
-
-    //Gestor de colisiones
-    CollisionManager collisionManager{&entities};
+   SceneManager sceneManager;
 } appstate;
 
 
@@ -58,12 +39,12 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv)
     // Sugerir a la plataforma una tasa objetivo de 60 FPS
     SDL_SetHint(SDL_HINT_MAIN_CALLBACK_RATE, "60");
 
-    SDL_LogPlatformInfo();
+    
 
     SDL_Window *window = nullptr;
     SDL_Renderer *renderer = nullptr;
-
-    if (!SDL_CreateWindowAndRenderer("Práctica 02 - Vectores y Movimiento", 960, 540, SDL_WINDOW_RESIZABLE, &window, &renderer))
+//Todo este tiempo se me olvido cambiar la linea 66 XD. Pero ya esta cambiada jaja
+    if (!SDL_CreateWindowAndRenderer("Práctica 05 - Manejo de escenas", 960, 540, SDL_WINDOW_RESIZABLE, &window, &renderer))
     {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Error al crear ventana o renderer: %s", SDL_GetError());
         return SDL_APP_FAILURE;
@@ -76,81 +57,11 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv)
     ::appstate.last_ticks = SDL_GetTicks();
 
 
-//Armamos el jugador
-
-//Creamos el GameObject del jugador
-auto player = std::make_unique<GameObject>("Player");
-//Le damos posicion y escala
-player->AddComponent<TransformComponent>(
-    Vector2 {440.0f, 240.0f},
-    Vector2{1.0f, 1.0f}
-
-);
-// Le damos color
-player->AddComponent<RectRenderComponent>(
-    Vector2{60.0f, 60.0f},
-    SDL_Color{60, 180, 100, 255}
+::appstate.sceneManager.ChangeScene(
+    std::make_unique<TitleScene>(&::appstate.sceneManager)
 );
 
-//Caja de colision del jugador
-player->AddComponent<ColliderComponent>(
-    Vector2{60.0f, 60.0f}
-);
-
-
-//Le damos controles
-player->AddComponent<PlayerControllerComponent>(
-    300.0f, false  //Le cambiamos a false para que se desactive el seguimiento del mouse
-    //y se pruebe unicamente con los controles WASD/flechas
-);
-
-//Metemos al jugador en la lista de entidades
-::appstate.entities.push_back(std::move(player));
-
-//ENTIDAD OBSTACULO
-
-auto obstacle = std::make_unique<GameObject>("Obstacle");
-// se cambia la posicion y tamanio para la practica 04
-obstacle ->AddComponent<TransformComponent>(
-    Vector2{180.0f, 140.0f},
-     Vector2{1.0f, 1.0f}
-    );
-
-obstacle->AddComponent<RectRenderComponent>(
-    Vector2{80.0f, 80.0f},
-SDL_Color{220, 70, 70, 255}
-);
-//Caja de colision
-obstacle->AddComponent<ColliderComponent>(
-    Vector2{80.0f, 80.0f}
-);
-
-
-::appstate.entities.push_back(std::move(obstacle));
-
-// ENTIDAD PELOTA
-
-auto ball = std::make_unique<GameObject>("Ball");
-
-ball->AddComponent<TransformComponent>(
-    Vector2{468.0f, 80.0f},
-    Vector2{1.0f, 1.0f}
-);
-ball->AddComponent<RectRenderComponent>(
-    Vector2{24.0f, 24.0f},
-    SDL_Color{240, 210, 60, 255}
-);
-
-// Caja de colision
-ball->AddComponent<ColliderComponent>(
-    Vector2{24.0f, 24.0f}
-);
-
-ball->AddComponent<BallComponent>(
-    Vector2{220.0f, 180.0f}
-);
-
-::appstate.entities.push_back(std::move(ball));
+::appstate.sceneManager.ProcessPendingChanges();
 
 
 
@@ -173,53 +84,18 @@ SDL_AppResult SDL_AppIterate(void *appstate)
         delta_time = 0.05f;
     }
 
-//2. Fase de actualización del teclado (Update)
+app->sceneManager.ProcessPendingChanges();
 
-
-//La fisica avanza en pasos discretos de 1/60s
-constexpr float FIXED_TIMESTEP = 1.0f/60.0f;
-app->physics_accumulator += delta_time;
-
-
-while (app->physics_accumulator >= FIXED_TIMESTEP){
-
-//Actrualizamos todas las entidades
-for(auto &entity : app->entities){
-    entity->Update(FIXED_TIMESTEP);
+if(!app->sceneManager.HasScene()){
+    return SDL_APP_SUCCESS;
 }
-// Revisamos colisiones despues del movimiento
-app->collisionManager.CheckCollisions();
+app->sceneManager.Update(delta_time);
 
-
-app->physics_accumulator -= FIXED_TIMESTEP;
-    
-}
-
-
-    
-
-    // 3. Fase de Renderizado
-    SDL_SetRenderDrawColor(app->renderer, 30, 30, 35, 255);
-    SDL_RenderClear(app->renderer);
-
-    //Renderizamos todas las entidades
-    for(auto &entity : app->entities){
-        entity->Render(app->renderer);
-    }
-//Debug Draw de colisiones
-if(app->debug_draw){
-for(auto &entity : app->entities)
-{
-    if(auto *collider = entity->GetComponent<ColliderComponent>())
-    {
-        collider->RenderDebug(app->renderer);
-    }
-}
-
-}
-
+    app->sceneManager.Render(app->renderer);
 
     SDL_RenderPresent(app->renderer);
+
+
 
     return SDL_APP_CONTINUE;
 }
@@ -234,21 +110,9 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
         return SDL_APP_SUCCESS;
     }
 
-    //F1 activa / desactiva Debug Draw
-    if(event->type == SDL_EVENT_KEY_DOWN &&
-    event->key.scancode == SDL_SCANCODE_F1)
-    {
-        if(app){
-
-            app->debug_draw = !app->debug_draw;
-
-            SDL_Log(
-                "Debug Draw: %s",
-                app->debug_draw ? "ACTIVADO" : "DESACTIVADO"
-            );
-        }
-    }
-
+   if(app && app->sceneManager.HasScene()){
+    app->sceneManager.HandleEvent(*event);
+   }
 
     return SDL_APP_CONTINUE;
 }
@@ -258,20 +122,12 @@ void SDL_AppQuit(void *appstate, SDL_AppResult result)
     AppState *app = static_cast<AppState *>(appstate);
     if (app)
     {
-        //Primero elimino las entidades
-        app->entities.clear();
+        app->sceneManager.Clear();
 
-        //Despues destruimos el renderer y ventana
         SDL_DestroyRenderer(app->renderer);
         SDL_DestroyWindow(app->window);
     }
     SDL_Quit();
 }
 
-void SDL_LogPlatformInfo()
-{
-    SDL_Log("Plataforma: %s", SDL_GetPlatform());
-    SDL_Log("Cores lógicos de CPU: %d", SDL_GetNumLogicalCPUCores());
-    SDL_Log("RAM total: %d MB", SDL_GetSystemRAM());
-    SDL_Log("Driver de video: %s", SDL_GetCurrentVideoDriver());
-}
+

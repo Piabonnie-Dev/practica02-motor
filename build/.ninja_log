@@ -1,3 +1,7 @@
 # ninja log v7
-19	2289	8123468602738821	CMakeFiles/practica04_motor.dir/src/main.cpp.obj	f952f82385c78d28
-2311	2543	8123468625658963	practica04_motor.exe	5d5dcb83c1350c7a
+46	1993	8125191431820191	CMakeFiles/practica05_motor.dir/src/PauseScene.cpp.obj	d70bcf2f5a46d903
+16	2019	8125191431528811	CMakeFiles/practica05_motor.dir/src/main.cpp.obj	2bb0002e8e813388
+25	2236	8125191431610194	CMakeFiles/practica05_motor.dir/src/TitleScene.cpp.obj	4b70dbb5f4e12a23
+56	2276	8125191431924019	CMakeFiles/practica05_motor.dir/src/GameOverScene.cpp.obj	d6510d6452702ea4
+34	2594	8125191431710187	CMakeFiles/practica05_motor.dir/src/GameScene.cpp.obj	bdf3c3e19b937480
+2594	2868	8125191457301900	practica05_motor.exe	6029894a215f7b7b

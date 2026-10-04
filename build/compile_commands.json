@@ -1,8 +1,32 @@
 [
 {
   "directory": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -I\"C:/motor de videojuegos C++/semana02/semana02/plantilla/src\" -g -std=gnu++20 -o CMakeFiles\\practica04_motor.dir\\src\\main.cpp.obj -c \"C:\\motor de videojuegos C++\\semana02\\semana02\\plantilla\\src\\main.cpp\"",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -I\"C:/motor de videojuegos C++/semana02/semana02/plantilla/src\" -std=gnu++20 -o CMakeFiles\\practica05_motor.dir\\src\\main.cpp.obj -c \"C:\\motor de videojuegos C++\\semana02\\semana02\\plantilla\\src\\main.cpp\"",
   "file": "C:/motor de videojuegos C++/semana02/semana02/plantilla/src/main.cpp",
-  "output": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build/CMakeFiles/practica04_motor.dir/src/main.cpp.obj"
+  "output": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build/CMakeFiles/practica05_motor.dir/src/main.cpp.obj"
+},
+{
+  "directory": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -I\"C:/motor de videojuegos C++/semana02/semana02/plantilla/src\" -std=gnu++20 -o CMakeFiles\\practica05_motor.dir\\src\\TitleScene.cpp.obj -c \"C:\\motor de videojuegos C++\\semana02\\semana02\\plantilla\\src\\TitleScene.cpp\"",
+  "file": "C:/motor de videojuegos C++/semana02/semana02/plantilla/src/TitleScene.cpp",
+  "output": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build/CMakeFiles/practica05_motor.dir/src/TitleScene.cpp.obj"
+},
+{
+  "directory": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -I\"C:/motor de videojuegos C++/semana02/semana02/plantilla/src\" -std=gnu++20 -o CMakeFiles\\practica05_motor.dir\\src\\GameScene.cpp.obj -c \"C:\\motor de videojuegos C++\\semana02\\semana02\\plantilla\\src\\GameScene.cpp\"",
+  "file": "C:/motor de videojuegos C++/semana02/semana02/plantilla/src/GameScene.cpp",
+  "output": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build/CMakeFiles/practica05_motor.dir/src/GameScene.cpp.obj"
+},
+{
+  "directory": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -I\"C:/motor de videojuegos C++/semana02/semana02/plantilla/src\" -std=gnu++20 -o CMakeFiles\\practica05_motor.dir\\src\\PauseScene.cpp.obj -c \"C:\\motor de videojuegos C++\\semana02\\semana02\\plantilla\\src\\PauseScene.cpp\"",
+  "file": "C:/motor de videojuegos C++/semana02/semana02/plantilla/src/PauseScene.cpp",
+  "output": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build/CMakeFiles/practica05_motor.dir/src/PauseScene.cpp.obj"
+},
+{
+  "directory": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -I\"C:/motor de videojuegos C++/semana02/semana02/plantilla/src\" -std=gnu++20 -o CMakeFiles\\practica05_motor.dir\\src\\GameOverScene.cpp.obj -c \"C:\\motor de videojuegos C++\\semana02\\semana02\\plantilla\\src\\GameOverScene.cpp\"",
+  "file": "C:/motor de videojuegos C++/semana02/semana02/plantilla/src/GameOverScene.cpp",
+  "output": "C:/motor de videojuegos C++/semana02/semana02/plantilla/build/CMakeFiles/practica05_motor.dir/src/GameOverScene.cpp.obj"
 }
 ]

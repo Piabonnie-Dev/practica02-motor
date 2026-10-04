@@ -80,7 +80,7 @@ void OnCollision(GameObject *other) override
 
     SDL_Log("Collision: %s con %s", 
     owner->GetTag().c_str(),
-    owner->GetTag().c_str());
+    other->GetTag().c_str());
 
     //Un trigger detecta pero no provoca rebote
     if(otherCollider->is_trigger)

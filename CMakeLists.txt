@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(practica04_motor LANGUAGES CXX)
+project(practica05_motor LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -43,6 +43,19 @@ add_executable(${PROJECT_NAME}
     src/ColliderComponent.hpp
     src/CollisionManager.hpp
     src/BallComponent.hpp
+
+    #Practica 05
+   src/TitleScene.cpp
+    src/GameScene.cpp
+    src/PauseScene.cpp
+    src/GameOverScene.cpp
+
+    src/Scene.hpp
+    src/SceneManager.hpp
+    src/TitleScene.hpp
+    src/GameScene.hpp
+    src/PauseScene.hpp
+    src/GameOverScene.hpp
 )
 
 target_include_directories(

@@ -1,133 +1,84 @@
 #define SDL_MAIN_USE_CALLBACKS 1
 
 #include <memory>
-
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
-#include "SceneManager.hpp"
-#include "TitleScene.hpp"
+#include "Engine/SceneManager.hpp"
+#include "Game/TitleScene.hpp"
 
+struct AppState {
+    SDL_Window *window{};
+    SDL_Renderer *renderer{};
+    Uint64 lastTicks{};
+    SceneManager scenes;
+};
 
+static AppState app;
 
-
-
-
-
-struct AppState
-{
-    SDL_Renderer *renderer{nullptr};
-    SDL_Window *window{nullptr};
-
-    // Temporizador para Delta Time
-    Uint64 last_ticks{0};
-
-    
-
-   SceneManager sceneManager;
-} appstate;
-
-
-SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv)
-{
+SDL_AppResult SDL_AppInit(void **state, int, char **) {
     if (!SDL_Init(SDL_INIT_VIDEO))
-    {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Error al inicializar SDL: %s", SDL_GetError());
         return SDL_APP_FAILURE;
-    }
 
-    // Sugerir a la plataforma una tasa objetivo de 60 FPS
-    SDL_SetHint(SDL_HINT_MAIN_CALLBACK_RATE, "60");
-
-    
-
-    SDL_Window *window = nullptr;
-    SDL_Renderer *renderer = nullptr;
-//Todo este tiempo se me olvido cambiar la linea 66 XD. Pero ya esta cambiada jaja
-    if (!SDL_CreateWindowAndRenderer("Práctica 05 - Manejo de escenas", 960, 540, SDL_WINDOW_RESIZABLE, &window, &renderer))
-    {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Error al crear ventana o renderer: %s", SDL_GetError());
+    if (!SDL_CreateWindowAndRenderer(
+        "Space Invaders",
+        960, 540,
+        SDL_WINDOW_RESIZABLE,
+        &app.window,
+        &app.renderer))
         return SDL_APP_FAILURE;
-    }
 
-    SDL_Log("Renderer Driver activo: %s", SDL_GetRendererName(renderer));
+    app.lastTicks = SDL_GetTicks();
 
-    ::appstate.window = window;
-    ::appstate.renderer = renderer;
-    ::appstate.last_ticks = SDL_GetTicks();
+    app.scenes.ChangeScene(
+        std::make_unique<TitleScene>(&app.scenes));
 
+    app.scenes.ProcessPendingChanges();
 
-::appstate.sceneManager.ChangeScene(
-    std::make_unique<TitleScene>(&::appstate.sceneManager)
-);
-
-::appstate.sceneManager.ProcessPendingChanges();
-
-
-
-    *appstate = &::appstate;
+    *state = &app;
     return SDL_APP_CONTINUE;
 }
 
-SDL_AppResult SDL_AppIterate(void *appstate)
-{
-    AppState *app = static_cast<AppState *>(appstate);
+SDL_AppResult SDL_AppIterate(void *state) {
+    auto *app = static_cast<AppState *>(state);
 
-    // 1. Medición de Delta Time en segundos
-    Uint64 current_ticks = SDL_GetTicks();
-    float delta_time = static_cast<float>(current_ticks - app->last_ticks) / 1000.0f;
-    app->last_ticks = current_ticks;
+    Uint64 now = SDL_GetTicks();
+    float dt = (now - app->lastTicks) / 1000.0f;
+    app->lastTicks = now;
 
-    // Evitar saltos de tiempo excesivos si el sistema operativo pausa el proceso
-    if (delta_time > 0.05f)
-    {
-        delta_time = 0.05f;
-    }
+    if (dt > 0.05f) dt = 0.05f;
 
-app->sceneManager.ProcessPendingChanges();
+    app->scenes.ProcessPendingChanges();
 
-if(!app->sceneManager.HasScene()){
-    return SDL_APP_SUCCESS;
-}
-app->sceneManager.Update(delta_time);
+    if (!app->scenes.HasScene())
+        return SDL_APP_SUCCESS;
 
-    app->sceneManager.Render(app->renderer);
+    app->scenes.Update(dt);
+    app->scenes.ProcessPendingChanges();
 
+    app->scenes.Render(app->renderer);
     SDL_RenderPresent(app->renderer);
 
-
-
     return SDL_APP_CONTINUE;
 }
-//Sustituimos gran parte de SDL_AppEvent para cumplir el interruptor de depuracion con F1
-SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
-{
-   
-   AppState *app = static_cast<AppState *>(appstate);
+
+SDL_AppResult SDL_AppEvent(void *state, SDL_Event *event) {
+    auto *app = static_cast<AppState *>(state);
 
     if (event->type == SDL_EVENT_QUIT)
-    {
         return SDL_APP_SUCCESS;
-    }
 
-   if(app && app->sceneManager.HasScene()){
-    app->sceneManager.HandleEvent(*event);
-   }
+    if (app->scenes.HasScene())
+        app->scenes.HandleEvent(*event);
 
     return SDL_APP_CONTINUE;
 }
 
-void SDL_AppQuit(void *appstate, SDL_AppResult result)
-{
-    AppState *app = static_cast<AppState *>(appstate);
-    if (app)
-    {
-        app->sceneManager.Clear();
+void SDL_AppQuit(void *state, SDL_AppResult) {
+    auto *app = static_cast<AppState *>(state);
 
-        SDL_DestroyRenderer(app->renderer);
-        SDL_DestroyWindow(app->window);
-    }
+    app->scenes.Clear();
+    SDL_DestroyRenderer(app->renderer);
+    SDL_DestroyWindow(app->window);
     SDL_Quit();
 }
-
-

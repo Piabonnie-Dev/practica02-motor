@@ -1,71 +1,37 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(practica05_motor LANGUAGES CXX)
+project(proyecto01 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+find_package(SDL3 REQUIRED CONFIG)
 
-# Detección de SDL3
-find_package(SDL3 QUIET)
-
-if(NOT SDL3_FOUND)
-
-    find_package(PkgConfig REQUIRED)
-
-    pkg_check_modules(
-        SDL3
-        REQUIRED
-        IMPORTED_TARGET
-        sdl3
-    )
-
-    set(SDL3_TARGET PkgConfig::SDL3)
-
-else()
-
-    set(SDL3_TARGET SDL3::SDL3)
-
-endif()
-
-add_executable(${PROJECT_NAME}
-
+add_executable(proyecto01
     src/main.cpp
-    src/Vector2.hpp
-    src/Component.hpp
-    src/GameObject.hpp
-    src/TransformComponent.hpp
-    src/RectRenderComponent.hpp
-    src/PlayerControllerComponent.hpp
 
-    # Practica 04
-    src/ColliderComponent.hpp
-    src/CollisionManager.hpp
-    src/BallComponent.hpp
+    src/Math/Vector2.cpp
 
-    #Practica 05
-   src/TitleScene.cpp
-    src/GameScene.cpp
-    src/PauseScene.cpp
-    src/GameOverScene.cpp
+    src/Engine/Component.cpp
+    src/Engine/GameObject.cpp
+    src/Engine/TransformComponent.cpp
+    src/Engine/RectRenderComponent.cpp
+    src/Engine/Scene.cpp
+    src/Engine/SceneManager.cpp
 
-    src/Scene.hpp
-    src/SceneManager.hpp
-    src/TitleScene.hpp
-    src/GameScene.hpp
-    src/PauseScene.hpp
-    src/GameOverScene.hpp
+    src/Physics/ColliderComponent.cpp
+    src/Physics/CollisionManager.cpp
+
+    src/Game/TitleScene.cpp
+    src/Game/GameScene.cpp
+    src/Game/PauseScene.cpp
+    src/Game/GameOverScene.cpp
+    src/Game/PlayerComponent.cpp
+    src/Game/ProjectileComponent.cpp
 )
 
-target_include_directories(
-    ${PROJECT_NAME}
-    PRIVATE
-    src
+target_include_directories(proyecto01 PRIVATE
+    include
 )
 
-target_link_libraries(
-    ${PROJECT_NAME}
-    PRIVATE
-    ${SDL3_TARGET}
-)
+target_link_libraries(proyecto01 PRIVATE SDL3::SDL3)

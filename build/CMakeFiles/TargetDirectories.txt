@@ -1,3 +1,3 @@
-C:/motor de videojuegos C++/semana02/semana02/plantilla/build/CMakeFiles/practica05_motor.dir
+C:/motor de videojuegos C++/semana02/semana02/plantilla/build/CMakeFiles/proyecto01.dir
 C:/motor de videojuegos C++/semana02/semana02/plantilla/build/CMakeFiles/edit_cache.dir
 C:/motor de videojuegos C++/semana02/semana02/plantilla/build/CMakeFiles/rebuild_cache.dir

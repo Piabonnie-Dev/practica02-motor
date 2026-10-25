@@ -30,7 +30,7 @@ player = nullptr;
     shootCooldown = 0;
     enemyShootCooldown = 1;
     enemyDirection = 1;
-    enemySpeed =50;
+    enemySpeed =100;
 std::srand(static_cast<unsigned>(SDL_GetTicks()));
 
     debug = false;
@@ -99,7 +99,7 @@ for (int bunker = 0; bunker < 4; ++bunker) {
 
 
 }
-
+//Tecla F1
 void GameScene::HandleEvent(const SDL_Event &event) {
     if (event.type != SDL_EVENT_KEY_DOWN) return;
 
@@ -129,7 +129,7 @@ void GameScene::Update(float dt) {
 
         auto *t = player->GetComponent<TransformComponent>();
 
-        auto bullet = std::make_unique<GameObject>("PlayerBullet");
+        auto bullet = std::make_unique<GameObject>("PlayerBullet"); //Representación de la bala 
 
         bullet->AddComponent<TransformComponent>(
             Vector2{t->position.x + 26, t->position.y - 20},
@@ -151,7 +151,7 @@ void GameScene::Update(float dt) {
         shootCooldown = 0.25f;
     }
 
-    // Disparo enemigo
+    // Disparo enemigo 
     if (enemyShootCooldown <= 0) {
         std::vector<GameObject *> enemies;
 
@@ -170,11 +170,11 @@ void GameScene::Update(float dt) {
                 Vector2{1, 1});
 
             bullet->AddComponent<RectRenderComponent>(
-                Vector2{8, 18},
+                Vector2{8, 18}, //tamaño de la bala 
                 SDL_Color{240, 80, 80, 255});
 
             bullet->AddComponent<ColliderComponent>(
-                Vector2{8, 18},
+                Vector2{8, 18}, //tamaño de la bala
                 Vector2{},
                 true);
 
@@ -186,11 +186,11 @@ void GameScene::Update(float dt) {
 
         enemyShootCooldown = 1.2f;
     }
-
+// la puntuacion
     accumulator += dt;
-
+int alive = 0;
     while (accumulator >= FIXED_DT) {
-        int alive = 0;
+        
         bool edge = false;
 
         for (auto &e : m_entities) {
@@ -217,7 +217,7 @@ void GameScene::Update(float dt) {
                     e->GetComponent<TransformComponent>()
                         ->Translate(Vector2{0, 20});
         }
-
+//el incremento de la velocidad del enemigo
         enemySpeed = 50 + (24 - alive) * 3;
 
         Scene::FixedUpdate(FIXED_DT);
@@ -253,14 +253,14 @@ void GameScene::Update(float dt) {
     int score = (24 - enemies) * 100;
 
     auto *pc = player->GetComponent<PlayerComponent>();
-
+//Si eliminas a todos los enemigos, ganas la partida.
     if (enemies == 0) {
         m_manager->ChangeScene(
             std::make_unique<GameOverScene>(
                 m_manager, true, score));
         return;
     }
-
+//si el jugador le llegan los enemigos a su posicion pierde o cuando no tiene vidas
     if (pc->GetLives() <= 0 || reachedPlayer) {
         m_manager->ChangeScene(
             std::make_unique<GameOverScene>(
@@ -295,7 +295,7 @@ void GameScene::Render(SDL_Renderer *renderer) {
     SDL_RenderClear(renderer);
 
     Scene::Render(renderer);
-
+//Dibujado de las colisiones al activar F1
     if (debug)
         for (auto &e : m_entities)
             if (auto *c = e->GetComponent<ColliderComponent>())

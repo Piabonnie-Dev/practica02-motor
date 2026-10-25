@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "2"
+			"value" : "4"
 		},
 		{
 			"name" : "CMAKE_COMMAND",
@@ -1228,6 +1228,18 @@
 			],
 			"type" : "PATH",
 			"value" : "C:/msys64/ucrt64/lib/cmake/SDL3"
+		},
+		{
+			"name" : "SDL3_image_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for SDL3_image."
+				}
+			],
+			"type" : "PATH",
+			"value" : "C:/msys64/ucrt64/lib/cmake/SDL3_image"
 		},
 		{
 			"name" : "proyecto01_BINARY_DIR",

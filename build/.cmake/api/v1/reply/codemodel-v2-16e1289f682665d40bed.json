@@ -7,29 +7,43 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "SDL3::Headers::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-SDL3__Headers-Debug-d8a79db85d6662d24d07.json",
+					"jsonFile" : "target-SDL3__Headers-Debug-5869533766fbfd16e512.json",
 					"name" : "SDL3::Headers",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "SDL3::SDL3-shared::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-SDL3__SDL3-shared-Debug-ec6e781157a44a1353e2.json",
+					"jsonFile" : "target-SDL3__SDL3-shared-Debug-bfae50ec2221a675f630.json",
 					"name" : "SDL3::SDL3-shared",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "SDL3::SDL3-static::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-SDL3__SDL3-static-Debug-aed3fd58d9c50e2afa69.json",
+					"jsonFile" : "target-SDL3__SDL3-static-Debug-bae6c60b68272a092ee9.json",
 					"name" : "SDL3::SDL3-static",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "SDL3::SDL3_test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-SDL3__SDL3_test-Debug-38499eb964c2aaaafa9c.json",
+					"jsonFile" : "target-SDL3__SDL3_test-Debug-be88ebd92bd13de43073.json",
 					"name" : "SDL3::SDL3_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "SDL3_image::SDL3_image-shared::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-SDL3_image__SDL3_image-shared-Debug-0271af9da36451996352.json",
+					"name" : "SDL3_image::SDL3_image-shared",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "SDL3_image::SDL3_image-static::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-SDL3_image__SDL3_image-static-Debug-c4cf1472f8a14b16de80.json",
+					"name" : "SDL3_image::SDL3_image-static",
 					"projectIndex" : 0
 				}
 			],
@@ -41,7 +55,9 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4,
+						5
 					],
 					"build" : ".",
 					"jsonFile" : "directory-.-Debug-b5805d5c08fd3d92def4.json",
@@ -66,7 +82,9 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4,
+						5
 					],
 					"directoryIndexes" : 
 					[
@@ -84,7 +102,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "proyecto01::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-proyecto01-Debug-a81ec4a2ebca53c0cae8.json",
+					"jsonFile" : "target-proyecto01-Debug-c986af77b0a9ffc89efe.json",
 					"name" : "proyecto01",
 					"projectIndex" : 0
 				}

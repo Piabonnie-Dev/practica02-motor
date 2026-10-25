@@ -15,7 +15,7 @@ class GameScene : public Scene {
     float enemyShootCooldown{1};
 
     float enemyDirection{1};
-    float enemySpeed{50};
+    float enemySpeed{100};
     
 
     bool debug{false};

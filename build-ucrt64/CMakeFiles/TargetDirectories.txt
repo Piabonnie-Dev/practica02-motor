@@ -1,0 +1,3 @@
+C:/motor de videojuegos C++/semana02/semana02/plantilla/build-ucrt64/CMakeFiles/proyecto01.dir
+C:/motor de videojuegos C++/semana02/semana02/plantilla/build-ucrt64/CMakeFiles/edit_cache.dir
+C:/motor de videojuegos C++/semana02/semana02/plantilla/build-ucrt64/CMakeFiles/rebuild_cache.dir

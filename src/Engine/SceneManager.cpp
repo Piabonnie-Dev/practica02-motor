@@ -5,21 +5,21 @@
 SceneManager::~SceneManager() {
     Clear();
 }
-
+//ChangeScene reemplaza la escena superior
 void SceneManager::ChangeScene(std::unique_ptr<Scene> scene){
     pending = Action::Change;
     nextScene = std::move(scene);
 }
-
+// coloca una escena adicional encima de la actual
 void SceneManager::PushScene(std::unique_ptr<Scene> scene){
     pending = Action::Push;
     nextScene = std::move(scene);
 }
-
+// Retira la pausa y permite regresar a la partida sin reiniciarla. 
 void SceneManager::PopScene(){
     pending = Action::Pop;
 }
-
+//Aplica los cambios de escena en un momento seguro 
 void SceneManager::ProcessPendingChanges(){
     if(pending == Action::None) return;
 

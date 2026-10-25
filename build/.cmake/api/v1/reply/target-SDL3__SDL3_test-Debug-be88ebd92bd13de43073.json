@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "C:/msys64/ucrt64/lib/libSDL3.a"
+			"path" : "C:/msys64/ucrt64/lib/libSDL3_test.a"
 		}
 	],
 	"backtrace" : 5,
@@ -18,7 +18,7 @@
 		],
 		"files" : 
 		[
-			"C:/msys64/ucrt64/lib/cmake/SDL3/SDL3staticTargets.cmake",
+			"C:/msys64/ucrt64/lib/cmake/SDL3/SDL3testTargets.cmake",
 			"C:/msys64/ucrt64/lib/cmake/SDL3/SDL3Config.cmake",
 			"CMakeLists.txt"
 		],
@@ -30,7 +30,7 @@
 			{
 				"command" : 2,
 				"file" : 2,
-				"line" : 8,
+				"line" : 10,
 				"parent" : 0
 			},
 			{
@@ -40,7 +40,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 66,
+				"line" : 92,
 				"parent" : 2
 			},
 			{
@@ -66,7 +66,7 @@
 		"major" : 2,
 		"minor" : 11
 	},
-	"id" : "SDL3::SDL3-static::@6890427a1f51a3e7e1df",
+	"id" : "SDL3::SDL3_test::@6890427a1f51a3e7e1df",
 	"imported" : true,
 	"interfaceCompileDependencies" : 
 	[
@@ -79,72 +79,12 @@
 	[
 		{
 			"backtrace" : 6,
-			"fragment" : "m"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "iconv"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "kernel32"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "user32"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "gdi32"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "winmm"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "imm32"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "ole32"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "oleaut32"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "version"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "uuid"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "advapi32"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "setupapi"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "shell32"
-		},
-		{
-			"backtrace" : 6,
-			"fragment" : "dinput8"
-		},
-		{
-			"backtrace" : 6,
 			"id" : "SDL3::Headers::@6890427a1f51a3e7e1df"
 		}
 	],
 	"local" : true,
-	"name" : "SDL3::SDL3-static",
-	"nameOnDisk" : "libSDL3.a",
+	"name" : "SDL3::SDL3_test",
+	"nameOnDisk" : "libSDL3_test.a",
 	"paths" : 
 	{
 		"build" : ".",

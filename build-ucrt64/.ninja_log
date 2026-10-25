@@ -1,0 +1,25 @@
+# ninja log v7
+58	1240	8146613215090881	CMakeFiles/proyecto01.dir/src/Math/Vector2.cpp.obj	e5a933daec65cbcb
+82	4498	8146613215379220	CMakeFiles/proyecto01.dir/src/Engine/TransformComponent.cpp.obj	128871e1126ada38
+66	4542	8146613215191477	CMakeFiles/proyecto01.dir/src/Engine/Component.cpp.obj	1099f96c0d17472d
+161	4692	8146613216144356	CMakeFiles/proyecto01.dir/src/Physics/CollisionManager.cpp.obj	daac1c91d4250cfe
+74	4696	8146613215260788	CMakeFiles/proyecto01.dir/src/Engine/GameObject.cpp.obj	150881b6ae6d13eb
+227	4825	8146613216790522	CMakeFiles/proyecto01.dir/src/Game/ProjectileComponent.cpp.obj	ba7f6b352a7d54a6
+134	4839	8146613215912354	CMakeFiles/proyecto01.dir/src/Engine/SceneManager.cpp.obj	35b58e2b31254480
+50	4848	8146613215015647	CMakeFiles/proyecto01.dir/src/main.cpp.obj	e0e2a798a3e1b86f
+148	4860	8146613216007819	CMakeFiles/proyecto01.dir/src/Physics/ColliderComponent.cpp.obj	f76823ce4d244ff7
+195	4869	8146613216503697	CMakeFiles/proyecto01.dir/src/Game/PauseScene.cpp.obj	7841a2b22a80dcc0
+124	4872	8146613215771857	CMakeFiles/proyecto01.dir/src/Engine/Scene.cpp.obj	6ade6b8cfe8b49f7
+170	4873	8146613216264758	CMakeFiles/proyecto01.dir/src/Game/TitleScene.cpp.obj	2a96f49baf78e907
+218	4984	8146613216705148	CMakeFiles/proyecto01.dir/src/Game/PlayerComponent.cpp.obj	a06a4c0ce46c5cd3
+208	5019	8146613216594420	CMakeFiles/proyecto01.dir/src/Game/GameOverScene.cpp.obj	7b112474df60c8ff
+94	5071	8146613215464378	CMakeFiles/proyecto01.dir/src/Engine/RectRenderComponent.cpp.obj	c279d7c1f0d18dae
+184	5473	8146613216365117	CMakeFiles/proyecto01.dir/src/Game/GameScene.cpp.obj	d139297bb5e5ed53
+45	1616	8146615298045580	CMakeFiles/proyecto01.dir/src/Engine/SpriteComponent.cpp.obj	cab239fda5a1858b
+67	1825	8146615298324192	CMakeFiles/proyecto01.dir/src/Game/ResourceDemoScene.cpp.obj	a1f21d59311d539b
+30	1646	8146615792799659	CMakeFiles/proyecto01.dir/src/Engine/ResourceManager.cpp.obj	b652b296e8bf8f6a
+1647	2025	8146615808964722	proyecto01.exe	645c01eecbcf6888
+47	1508	8146621613099613	CMakeFiles/proyecto01.dir/src/Game/PauseScene.cpp.obj	7841a2b22a80dcc0
+32	1634	8146621612936152	CMakeFiles/proyecto01.dir/src/main.cpp.obj	e0e2a798a3e1b86f
+40	2155	8146621613016268	CMakeFiles/proyecto01.dir/src/Game/GameScene.cpp.obj	d139297bb5e5ed53
+2156	2419	8146621634171685	proyecto01.exe	645c01eecbcf6888
